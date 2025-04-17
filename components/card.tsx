@@ -1,22 +1,23 @@
 "use client";
 
-import React from 'react'
-import { Card, CardBody, CardFooter } from '@heroui/card';
-import { Image } from '@heroui/image'
-import { Meme } from '@/types';
-import { HeartFilledIcon } from './icons';
-import Link from 'next/link';
+import React from "react";
+import { Card, CardBody, CardFooter } from "@heroui/card";
+import { Image } from "@heroui/image";
 
+import Link from "next/link";
+import { HeartFilledIcon } from "./icons";
+
+import { Meme } from "@/types";
 
 type CardMemeProps = {
     data: Meme;
-}
+};
 
 const CardMeme = ({ data }: CardMemeProps) => {
     const { name, likes, image } = data;
 
     const handleClick = () => {
-        window.open(image, '_blank');
+        window.open(image, "_blank");
     };
 
     return (
@@ -48,16 +49,16 @@ const CardMeme = ({ data }: CardMemeProps) => {
                         <p className="text-default-500">{likes}</p>
                     </div>
                     <Link
+                        className="text-blue-500 hover:underline text-sm"
                         href={image}
                         target="_blank"
-                        className="text-blue-500 hover:underline text-sm"
                     >
                         View Meme
                     </Link>
                 </CardFooter>
             </Card>
         </li>
-    )
+    );
 };
 
 export default CardMeme;

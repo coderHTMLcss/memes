@@ -1,12 +1,11 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { memes } from "../db";
 
-export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(request: NextRequest) {
   try {
-    const id = Number(params.id);
+    const url = new URL(request.url);
+    const idParam = url.pathname.split("/").pop();
+    const id = Number(idParam);
 
     if (isNaN(id)) {
       return NextResponse.json({ error: "Invalid ID" }, { status: 400 });

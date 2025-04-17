@@ -7,7 +7,7 @@ import {
     ModalBody,
     ModalFooter,
 } from "@heroui/modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@heroui/button";
 import InputFields from "./inputs";
 import { Meme, MemeFormErrors } from "@/types";
@@ -39,6 +39,10 @@ export default function ModalMeme({ isOpen, onOpenChange, meme, onSave }: ModalM
     const [formData, setFormData] = useState<Meme>(meme);
 
     const [errors, validateForm] = useValidateForm(formData);
+
+    useEffect(() => {
+        setFormData(meme);
+    }, [meme]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;

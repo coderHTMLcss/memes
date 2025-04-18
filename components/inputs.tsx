@@ -9,6 +9,7 @@ interface InputFieldProps {
 }
 
 const InputFields: React.FC<InputFieldProps> = ({ label, name, type = "text", value, onChange }) => {
+    if (name === 'id') return null;
     return (
         <label className="block">
             <span className="text-gray-700 font-medium">{label}</span>
